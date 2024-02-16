@@ -26,7 +26,7 @@ const Blog = async () => {
       <h1 className='text-3xl font-extrabold text-center'>Blog Page</h1>
         <ul>
             { posts.map((post: any) => (
-                <li key={post.id} > 
+                <li key={post.id} className='hover:underline' > 
                     <Link href={`/blog/${post.id}`} > { post.title } </Link>
                 </li>
             )) }
