@@ -1,38 +1,19 @@
-import React from 'react'
-import { Metadata } from 'next'
-import Link from 'next/link'
+import { Metadata } from "next";
+import Posts from "@/components/Posts";
+import PostSearch from "@/components/PostSearch";
 
-async function getData() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        next: {
-            revalidate: 60
-        }
-    })
+const metadata: Metadata = {
+  title: " Blog | Next App",
+};
 
-    if (!response.ok) throw new Error('Unable to fetch posts')
-
-    return response.json()
-}
-
-export const metadata: Metadata = {
-    title: " Blog | Next App"
-}
-
-const Blog = async () => {
-    const posts = await getData()
-
+const Blog = () => {
   return (
     <>
-      <h1 className='text-3xl font-extrabold text-center'>Blog Page</h1>
-        <ul>
-            { posts.map((post: any) => (
-                <li key={post.id} className='hover:underline' > 
-                    <Link href={`/blog/${post.id}`} > { post.title } </Link>
-                </li>
-            )) }
-        </ul>
+      <h1 className="text-3xl font-extrabold text-center">Blog Page</h1>
+      <PostSearch />
+      <Posts />
     </>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;
