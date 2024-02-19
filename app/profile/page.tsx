@@ -12,7 +12,7 @@ const Profile = async () => {
     const session = await getServerSession(authConfig)
 
   return (
-    <div className='w-full h-full flex justify-center'>
+    <div className='w-full h-full mt-20 flex flex-col items-center gap-7'>
       <h3 className='text-2xl font-bold'>Profile of {session?.user?.name} </h3>
       { session?.user?.image && <img src={session.user.image} /> }
     </div>
